@@ -1,0 +1,95 @@
+'scopeName': 'text.html.svelte'
+'name': 'Svelte'
+'fileType': [
+	'svelte'
+]
+'injections':
+	'L:text.html.svelte - meta.tag.template.svelte':
+		'patterns': [
+			{
+				# This should be the only pattern here!
+				# Add everything else into #svelte below
+				'include': '#svelte'
+			}
+		]
+'patterns': [
+	{
+		'include': 'text.html.basic'
+	}
+]
+'repository':
+	# The master pattern. All new patterns should be added here instead of in
+	# 'injections' to make including this language easier.
+	'svelte':
+		'patterns': [
+			{
+				'include': '#block-comment'
+			}
+			{
+				'include': '#inline-comment'
+			}
+			{
+				'include': '#block-expression-start'
+			}
+			{
+				'include': '#block-expression-mid'
+			}
+			{
+				'include': '#block-expression-end'
+			}
+			{
+				'include': '#escape'
+			}
+			{
+				'include': '#template'
+			}
+		]
+	'block-expression-start':
+		'begin': '{([#^])\\s*([\\w\\.]*)'
+		'beginCaptures':
+			'0':
+				'name': 'entity.name.tag.svelte'
+			'1':
+				'name': 'punctuation.definition.block.begin.svelte'
+			'2':
+				'name': 'entity.name.function.svelte'
+		'end': '\\s*(})'
+		'endCaptures':
+			'1':
+				'name': 'entity.name.tag.svelte'
+		'name': 'meta.tag.template.svelte'
+	'block-expression-mid':
+		'begin': '{([:^])\\s*([\\w\\.]*)'
+		'beginCaptures':
+			'0':
+				'name': 'entity.name.tag.svelte'
+			'1':
+				'name': 'punctuation.definition.block.mid.svelte'
+			'2':
+				'name': 'entity.name.function.svelte'
+		'end': '\\s*(})'
+		'endCaptures':
+			'1':
+				'name': 'entity.name.tag.svelte'
+		'name': 'meta.tag.template.svelte'
+	'block-expression-end':
+		'begin': '{(/)\\s*([\\w\\.]*)'
+		'beginCaptures':
+			'0':
+				'name': 'entity.name.tag.svelte'
+			'1':
+				'name': 'punctuation.definition.block.end.svelte'
+			'2':
+				'name': 'entity.name.function.svelte'
+		'end': '\\s*(})'
+		'endCaptures':
+			'1':
+				'name': 'entity.name.tag.svelte'
+		'name': 'meta.tag.template.svelte'
+	'template':
+		'begin': '{[<>]?'
+		'end': '}'
+		'captures':
+			'0':
+				'name': 'entity.name.tag.svelte'
+		'name': 'meta.tag.template.svelte'
